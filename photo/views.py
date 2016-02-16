@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Photo
+from photo.forms import PhotoEditForm
 
 def single_photo(request, photo_id, hidden=False):
 
@@ -15,3 +16,8 @@ def single_photo(request, photo_id, hidden=False):
 
 
 	return HttpResponse(response_text.format(photo_id = photo_id, photo_url = photo.image_file.url, photo_filtered_url = photo.filtered_image_file.url))
+
+def new_photo(reqeust):
+	edit_form = PhotoEditForm()
+
+	return render(request, 'new_photo.html', {'form': edit_form,})

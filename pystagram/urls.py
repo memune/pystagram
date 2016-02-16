@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^photo/(?P<photo_id>\d+)$', 'photo.views.single_photo', name='single_photo'),
-    url(r'^hidden_photo/(?P<photo_id>\d+)$', 'photo.views.sing_photo', name='hidden_single_photo', kwargs={'hidden':True}),
+    url(r'^hidden_photo/(?P<photo_id>\d+)$', 'photo.views.single_photo', name='hidden_single_photo', kwargs={'hidden':True}),
 ]
 
-urlpatterns += static('static_files', document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
